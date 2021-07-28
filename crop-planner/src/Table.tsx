@@ -29,9 +29,6 @@ export default class Table extends PureComponent<Props, State> {
     const fields = await fetchFields();
     const humusBalances = await postHumus(fields);
 
-    console.log(humusBalances);
-    
-
     this.setState({
       allCrops: await fetchCrops(),
       fields,
