@@ -1,15 +1,13 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the HumusBalanceHelper. For example:
-#
-# describe HumusBalanceHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe HumusBalanceHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:body) { FieldsService.instance.fetch_fields }
+  let(:tab) { [] }
+  let(:autre) {body.map { |field| tab.push(field[:crops])}}
+
+    describe "calculate humus balance" do
+      it "returns status code -3.9" do
+        expect(helper.calc_balance(autre[0][0])).to eq(-3.9)
+      end
+    end
 end
